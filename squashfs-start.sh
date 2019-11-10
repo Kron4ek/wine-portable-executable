@@ -16,12 +16,16 @@ script="$(readlink -f "${BASH_SOURCE[0]}")"
 # Default path: /tmp/scriptname_username_randomnumber
 working_dir=/tmp/"$(basename "$0")"_"$(id -un)"_$RANDOM
 
+# It's important to set correct sizes below, otherwise there will be
+# a problem with mounting squashfs image due to incorrectly calculated offset
+
 # The size of this script
-scriptsize=2985
+scriptsize=3134
 
 # The size of the squashfuse.tar archive
 # Squashfuse.tar contains squashfuse binaries
 sfusesize=2375680
+
 
 # Offset where the squashfs image is stored
 offset=$((scriptsize+sfusesize))
