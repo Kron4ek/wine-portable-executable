@@ -54,4 +54,4 @@ Use **create_wine_portable.sh** script.
 
 ### Notes
 
-This project has not been thoroughly tested, please report any problems you found.
+Keep in mind that this project is new and it has not been thoroughly tested, please report any problems you find.
