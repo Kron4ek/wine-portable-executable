@@ -6,7 +6,7 @@ export working_dir="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"/wine-portab
 
 wine_url="https://github.com/Kron4ek/Wine-Builds/releases/download/4.19/wine-4.19-staging-amd64.tar.xz"
 wine_runtime_url="https://github.com/Kron4ek/wine-portable-executable/raw/master/wine-runtime.tar.xz"
-wine_start_script_url="https://raw.githubusercontent.com/Kron4ek/wine-portable-executable/master/wine-start.sh"
+wine_start_script_url="https://raw.githubusercontent.com/Kron4ek/wine-portable-executable/master/wine.sh"
 squashfs_start_script_url="https://raw.githubusercontent.com/Kron4ek/wine-portable-executable/master/squashfs-start.sh"
 squashfuse_archive_url="https://github.com/Kron4ek/wine-portable-executable/raw/master/squashfuse.tar"
 
