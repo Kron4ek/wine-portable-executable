@@ -24,6 +24,8 @@ And, despite almost all libraries are included into squashfs image, some basic l
 
 It's important to install both 32-bit and 64-bit versions of required libraries.
 
+**GLIBC 2.27** or newer is required as the Runtime is a libraries from Ubuntu 18.04.
+
 ---
 
 ## How to use portable Wine executables
