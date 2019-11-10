@@ -17,7 +17,7 @@ script="$(readlink -f "${BASH_SOURCE[0]}")"
 working_dir=/tmp/"$(basename "$0")"_"$(id -un)"_$RANDOM
 
 # The size of this script
-scriptsize=2991
+scriptsize=2985
 
 # The size of the squashfuse.tar archive
 # Squashfuse.tar contains squashfuse binaries
