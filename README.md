@@ -43,7 +43,7 @@ You can download ready to use portable Wine/Proton executables from the [release
 
 ---
 
-## How to make portable Wine executables
+## How to create portable Wine executables
 
 Use **create_wine_portable.sh** script.
 
