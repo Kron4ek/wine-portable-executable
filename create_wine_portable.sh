@@ -2,7 +2,7 @@
 
 ## Required packages: squashfs-tools wget
 
-export working_dir="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"/wine-standalone
+export working_dir="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"/wine-portable
 
 wine_url="https://github.com/Kron4ek/Wine-Builds/releases/download/4.19/wine-4.19-staging-amd64.tar.xz"
 wine_runtime_url="https://github.com/Kron4ek/wine-portable-executable/raw/master/wine-runtime.tar.xz"
