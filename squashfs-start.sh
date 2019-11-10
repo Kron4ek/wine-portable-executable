@@ -20,12 +20,11 @@ working_dir=/tmp/"$(basename "$0")"_"$(id -un)"_$RANDOM
 # a problem with mounting squashfs image due to incorrectly calculated offset
 
 # The size of this script
-scriptsize=3134
+scriptsize=3133
 
 # The size of the squashfuse.tar archive
 # Squashfuse.tar contains squashfuse binaries
 sfusesize=2375680
-
 
 # Offset where the squashfs image is stored
 offset=$((scriptsize+sfusesize))
