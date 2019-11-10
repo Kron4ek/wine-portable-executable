@@ -2,7 +2,7 @@
 
 This project allows to pack Wine and almost all required libraries into a single portable executable that should work on most Linux distributions. This project uses SquashFS as the container for Wine and libraries (similar to what AppImage does).
 
-What's the benefits compared to regular Wine builds? The main benefit is that much less libraries need to be installed into system, another benefit is that SquashFS supports fast compression algorithms (such as lz4 or zstd), so Wine can launch faster and use less disk space.
+What are the benefits compared to regular Wine builds? The main benefit is that much less libraries need to be installed into system, another benefit is that SquashFS supports fast compression algorithms (such as lz4 or zstd), so Wine can launch faster and use less disk space.
 
 The structure of portable executables (from the top the end of the file):
 
@@ -41,7 +41,7 @@ Or to run winecfg:
 
     ./wine-portable-4.19-amd64.sh winecfg
     
-You can download ready to use portable Wine/Proton executables from the [releases](https://github.com/Kron4ek/wine-portable-executable/releases) page. **GLIBC 2.27** or newer is required for these builds.
+You can download ready to use portable Wine/Proton executables from the [releases](https://github.com/Kron4ek/wine-portable-executable/releases) page.
 
 ---
 
