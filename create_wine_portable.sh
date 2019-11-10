@@ -47,6 +47,6 @@ echo "Creating portable Wine executable..."
 mksquashfs squashfs-root wine.squashfs -comp lz4 -Xhc
 
 cat squashfs-start.sh squashfuse.tar wine.squashfs > wine-standalone.sh
-chmod +x wine-standalone.sh
+chmod +x wine-portable.sh
 
 echo "Done"
