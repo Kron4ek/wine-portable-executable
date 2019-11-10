@@ -2,7 +2,7 @@
 
 This project allows to pack Wine and almost all required libraries into a single portable executable that should work on most Linux distributions. This project uses SquashFS as the container for Wine and libraries (similar to what AppImage does).
 
-What's the benefits? The main benefit is that much less libraries needs to be installed into system, another benefit is that SquashFS supports fast compression algorithms (such as lz4 or zstd), so Wine can launch faster and use less disk space.
+What's the benefits compared to regular Wine builds? The main benefit is that much less libraries needs to be installed into system, another benefit is that SquashFS supports fast compression algorithms (such as lz4 or zstd), so Wine can launch faster and use less disk space.
 
 The structure of portable executables (from the top the end of the file):
 
@@ -17,8 +17,8 @@ and custom launch script
 
 First of all, **FUSE** is required.
 
-And, despite almost all libraries are included into squashfs image, some basic
-libraries are still needed to be installed. Some required libraries:
+And, despite almost all libraries are included into squashfs image, some basic libraries are still needed to be installed. Some required libraries:
+
 * libc6 (glibc)
 * libGL (videodriver)
 
@@ -51,5 +51,4 @@ Use **create_wine_portable.sh** script.
 
 ### Notes
 
-This project has not been thoroughly tested, so please report
-any problems you found.
+This project has not been thoroughly tested, please report any problems you found.
