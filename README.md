@@ -1,4 +1,4 @@
-## What is this?
+## Description
 
 This project allows to pack Wine and almost all required libraries into a single portable executable that should work on most Linux distributions. This project uses SquashFS as the container for Wine and libraries (similar to what AppImage does).
 
