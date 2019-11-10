@@ -20,7 +20,8 @@ First of all, **FUSE** is required.
 And, despite almost all libraries are included into squashfs image, some basic libraries are still need to be installed. Some required libraries:
 
 * libc6 (glibc)
-* libGL (videodriver)
+* libgl (videodriver)
+* libasound2
 
 It's important to install both 32-bit and 64-bit versions of required libraries.
 
