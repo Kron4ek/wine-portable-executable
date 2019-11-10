@@ -28,6 +28,8 @@ It's important to install both 32-bit and 64-bit versions of required libraries.
 
 ## How to use portable Wine executables
 
+Root rights are **not required**!
+
 Make a file executable and the run it. For example:
 
     chmod +x wine-standalone-4.19-amd64.sh
