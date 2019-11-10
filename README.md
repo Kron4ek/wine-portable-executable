@@ -34,12 +34,12 @@ Root rights are **not required**!
 
 Make a file executable and the run it. For example:
 
-    chmod +x wine-standalone-4.19-amd64.sh
-    ./wine-standalone-4.19-amd64.sh applications.exe
+    chmod +x wine-portable-4.19-amd64.sh
+    ./wine-portable-4.19-amd64.sh applications.exe
 
 Or to run winecfg:
 
-    ./wine-standalone-4.19-amd64.sh winecfg
+    ./wine-portable-4.19-amd64.sh winecfg
     
 You can download ready to use portable Wine/Proton executables from the [releases](https://github.com/Kron4ek/wine-portable-executable/releases) page. **GLIBC 2.27** or newer is required for these builds.
 
