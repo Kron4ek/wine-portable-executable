@@ -20,7 +20,7 @@ working_dir=/tmp/"$(basename "$0")"_"$(id -un)"_$RANDOM
 scriptsize=2991
 
 # The size of the squashfuse.tar archive
-# Squashfuse.tar contains squashfuse binaries for a
+# Squashfuse.tar contains squashfuse binaries
 sfusesize=2375680
 
 # Offset where the squashfs image is stored
