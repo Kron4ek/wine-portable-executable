@@ -35,7 +35,7 @@ Root rights are **not required**!
 Make a file executable and the run it. For example:
 
     chmod +x wine-portable-4.19-amd64.sh
-    ./wine-portable-4.19-amd64.sh applications.exe
+    ./wine-portable-4.19-amd64.sh application.exe
 
 Or to run winecfg:
 
