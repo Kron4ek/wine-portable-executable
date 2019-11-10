@@ -7,7 +7,7 @@ What are the benefits compared to regular Wine builds? The main benefit is that 
 The structure of portable executables (from the top the end of the file):
 
 1. Script that mounts bundled squashfs image and runs the Wine
-2. Squashfuse binary and its libraries, in case if squashfuse isn't isntalled
+2. Squashfuse binary and its libraries, in case if squashfuse isn't installed
 3. Squashfs image that contains Wine, required libraries (wine-runtime)
 and custom launch script
 
