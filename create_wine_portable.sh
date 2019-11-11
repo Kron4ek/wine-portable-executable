@@ -30,7 +30,7 @@ if  [ ! -d wine ]; then
 fi
 
 if [ ! -d wine-runtime ]; then
-	if [ ! -f "${script_dir}"/binaries/wine-runtime.tar.xz ];
+	if [ ! -f "${script_dir}"/binaries/wine-runtime.tar.xz ]; then
 		wget -O wine-runtime.tar.xz "${wine_runtime_url}" -q --show-progress
 		tar xf wine-runtime.tar.xz
 		rm wine-runtime.tar.xz
@@ -40,7 +40,12 @@ if [ ! -d wine-runtime ]; then
 fi
 
 if [ ! -f wine.sh ]; then
-	wget -O wine.sh "${wine_start_script_url}" -q --show-progress
+	if [ ! -f "${script_dir}"/wine.sh ]; then
+		wget -O wine.sh "${wine_start_script_url}" -q --show-progress
+	else
+		cp "${script_dir}"/wine.sh .
+	fi
+	
 	chmod +x wine.sh
 fi
 
@@ -50,12 +55,17 @@ if [ ! -f squashfuse.tar ]; then
 	if [ ! -f "${script_dir}"/binaries/squashfuse.tar ]; then
 		wget -O squashfuse.tar "${squashfuse_archive_url}" -q --show-progress
 	else
-		ln -sr "${script_dir}"/binaries/squashfuse.tar .
+		cp "${script_dir}"/binaries/squashfuse.tar .
 	fi
 fi
 
 if [ ! -f squashfs-start.sh ]; then
-	wget -O squashfs-start.sh "${squashfs_start_script_url}" -q --show-progress
+	if [ ! -f "${script_dir}"/squashfs-start.sh ]; then
+		wget -O squashfs-start.sh "${squashfs_start_script_url}" -q --show-progress
+	else
+		cp "${script_dir}"/squashfs-start.sh .
+	fi
+	
 	chmod +x squashfs-start.sh
 fi
 
