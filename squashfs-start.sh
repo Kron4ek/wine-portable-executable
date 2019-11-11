@@ -17,7 +17,7 @@ script="$(readlink -f "${BASH_SOURCE[0]}")"
 working_dir=/tmp/"$(basename "$0")"_"$(id -un)"_$RANDOM
 
 # It's important to set correct sizes below, otherwise there will be
-# a problem with mounting squashfs image due to incorrectly calculated offset
+# a problem with mounting the squashfs image due to an incorrectly calculated offset.
 
 # The size of this script
 scriptsize=3133
@@ -31,7 +31,7 @@ offset=$((scriptsize+sfusesize))
 
 appname="Wine (amd64) Portable SquashFS"
 
-# Enable this if packed Wine requires 64-bit OS to work
+# Enable this if packed Wine requires a 64-bit OS to work
 app_arch_amd64=1
 
 if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
@@ -44,7 +44,7 @@ elif [ "$1" = "-e" ]; then
 	if command -v unsquashfs 1>/dev/null; then
 		unsquashfs -o $offset -d "$(basename "$0")"_files "${script}"
 	else
-		echo "To extract the image install squashfs-tools package."
+		echo "To extract the image install squashfs-tools."
 	fi
 	
 	exit
@@ -54,7 +54,7 @@ elif [ "$1" = "-o" ]; then
 	exit
 fi
 
-# If app is 64-bit, then check if OS is 64-bit too
+# If the app is 64-bit, then check if the OS is 64-bit too
 if [ $app_arch_amd64 = 1 ] && [ $(getconf LONG_BIT) != 64 ]; then
 	echo "64-bit OS is required for this app to work!"
 	
@@ -71,7 +71,7 @@ fi
 echo "$appname"
 echo
 
-# Check if squashfuse is installed, and if it's not, then use builtin binaries
+# Check if squashfuse is installed, and if it's not, then use the builtin binaries
 if ! command -v squashfuse 1>/dev/null || [ "$1" = "-b" ]; then
 	mkdir -p "${working_dir}"
 	tail -c +$((scriptsize+1)) "${script}" | head -c $sfusesize > "${working_dir}"/squashfuse.tar
