@@ -71,7 +71,10 @@ fi
 
 echo
 echo "Creating portable Wine executable..."
+echo
+
 # Create squashfs image
+rm -f wine.squashfs
 mksquashfs squashfs-root wine.squashfs -comp $squashfs_compressor $compressor_arguments
 
 # Combine files into a single executable using cat
