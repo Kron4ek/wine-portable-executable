@@ -5,8 +5,8 @@
 script_dir="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 working_dir="${script_dir}"/wine-portable
 
-# You can change urls below if you want to use different Wine build,
-# different runtime or scripts
+# You can change the urls below if you want to use a different Wine build,
+# a different runtime, or different scripts
 wine_url="https://github.com/Kron4ek/Wine-Builds/releases/download/4.19/wine-4.19-staging-amd64.tar.xz"
 wine_runtime_url="https://github.com/Kron4ek/wine-portable-executable/raw/master/binaries/wine-runtime.tar.xz"
 wine_start_script_url="https://raw.githubusercontent.com/Kron4ek/wine-portable-executable/master/wine.sh"
@@ -70,14 +70,14 @@ if [ ! -f squashfs-start.sh ]; then
 fi
 
 echo
-echo "Creating portable Wine executable..."
+echo "Creating a portable Wine executable..."
 echo
 
-# Create squashfs image
+# Create the squashfs image
 rm -f wine.squashfs
 mksquashfs squashfs-root wine.squashfs -comp $squashfs_compressor $compressor_arguments
 
-# Combine files into a single executable using cat
+# Combine the files into a single executable using cat
 cat squashfs-start.sh squashfuse.tar wine.squashfs > wine-portable.sh
 chmod +x wine-portable.sh
 
