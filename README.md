@@ -17,11 +17,15 @@ and custom launch script
 
 First of all, **FUSE** is required.
 
-And, despite almost all libraries are included into squashfs image, some basic libraries are still need to be installed. Some required libraries:
+Despite most required libraries are included into squashfs image, some libraries are still need to be installed. List of libraries that are need to be installed:
 
 * libc6 (glibc)
+* libstdc++6 (gcc-libs)
+* libcgcc1 (gcc-libs)
+* libasound2 (sound libraries)
 * libgl (videodriver)
-* libasound2
+* libgnutls30
+* libgmp10
 
 It's important to install both 32-bit and 64-bit versions of required libraries.
 
