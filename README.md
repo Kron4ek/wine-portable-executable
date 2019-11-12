@@ -35,18 +35,23 @@ It's important to install both the 32-bit and 64-bit versions of these libraries
 
 ## How to use portable Wine executables
 
+You can download ready-to-use portable Wine/Proton executables from the [releases](https://github.com/Kron4ek/wine-portable-executable/releases) page.
+
 Root rights are **not required**!
 
 Make the script executable and run it. For example:
 
-    chmod +x wine-portable-4.19-amd64.sh
-    ./wine-portable-4.19-amd64.sh application.exe
+    chmod +x wine-portable-4.19-staging-amd64.sh
+    ./wine-portable-4.19-staging-amd64.sh application.exe
 
-Or to run winecfg:
+To run winecfg (you can run regedit the same way):
 
-    ./wine-portable-4.19-amd64.sh winecfg
+    ./wine-portable-4.19-staging-amd64.sh winecfg
     
-You can download ready-to-use portable Wine/Proton executables from the [releases](https://github.com/Kron4ek/wine-portable-executable/releases) page.
+For testing purposes or if installing libraries is not a problem for you (but you like SquashFS and the idea of a single Wine executable), you can disable the included libraries (runtime), in which case Wine will use only system libraries:
+
+    export DISABLE_RUNTIME=1
+    ./wine-portable-4.19-staging-amd64.sh application.exe
 
 ---
 
