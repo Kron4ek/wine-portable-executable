@@ -26,6 +26,7 @@ Despite that most required libraries are included into the squashfs image, some 
 * libgl (videodriver)
 * libgnutls30
 * libgmp10
+* libvulkan1 (if you want to use DXVK/D9VK or run Vulkan games)
 
 It's important to install both the 32-bit and 64-bit versions of these libraries.
 
