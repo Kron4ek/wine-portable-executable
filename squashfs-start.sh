@@ -37,7 +37,6 @@ app_arch_amd64=1
 if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
 	echo -e "-e \tExtract app files"
 	echo -e "-o \tShow squashfs offset"
-	echo -e "-b \tUse builtin squashfuse"
 
 	exit
 elif [ "$1" = "-e" ]; then
@@ -72,28 +71,20 @@ echo "$appname"
 echo
 
 # Check if squashfuse is installed, and if it's not, then use the builtin binaries
-if ! command -v squashfuse 1>/dev/null || [ "$1" = "-b" ]; then
+if ! command -v squashfuse 1>/dev/null || [ -z "$USE_SYSTEM_SQUASHFUSE" ]; then
 	mkdir -p "${working_dir}"
 	tail -c +$((scriptsize+1)) "${script}" | head -c $sfusesize > "${working_dir}"/squashfuse.tar
 	tar -C "${working_dir}" -xf "${working_dir}"/squashfuse.tar
 	rm "${working_dir}"/squashfuse.tar
 
-	if ! command -v squashfuse 1>/dev/null; then
-		echo "Squashfuse is not installed"
-	fi
-	echo "Using builtin squashfuse binary"
-	echo
+	export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${working_dir}/squashfuse/squashfuse-amd64"
+	sfuse="${working_dir}"/squashfuse/squashfuse-amd64/squashfuse
 
-	if [ $(getconf LONG_BIT) = 64 ]; then
-		export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${working_dir}/squashfuse/squashfuse-amd64"
-		sfuse="${working_dir}"/squashfuse/squashfuse-amd64/squashfuse
-	else
-		export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${working_dir}/squashfuse/squashfuse-i386"
-		sfuse="${working_dir}"/squashfuse/squashfuse-i386/squashfuse
-	fi
-	
 	chmod +x "${sfuse}"
 else
+	echo "Using squashfuse installed in the system"
+	echo
+
 	sfuse=squashfuse
 fi
 
@@ -102,7 +93,6 @@ fusermount -u "${working_dir}"/mnt 2>/dev/null || umount "${working_dir}"/mnt 2>
 
 "${sfuse}" -o offset=$offset "${script}" "${working_dir}"/mnt
 if [ $? = 0 ]; then
-	if [ "$1" = "-b" ]; then shift; fi
 	if [ "$1" = "wine" ]; then shift; fi
 	if [ "$1" = "wine64" ]; then shift; fi
 	
