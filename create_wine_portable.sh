@@ -16,8 +16,8 @@ squashfuse_archive_url="https://github.com/Kron4ek/wine-portable-executable/raw/
 # Available compressors: gzip, lzma, lzo, lz4, xz, zstd
 # See the mksquashfs documentation for more information
 # Keep in mind that builtin suqashfuse supports only lz4 and zstd
-squashfs_compressor=lz4
-compressor_arguments="-Xhc"
+squashfs_compressor="zstd"
+compressor_arguments="-Xcompression-level 10"
 
 mkdir -p "${working_dir}"/squashfs-root
 
