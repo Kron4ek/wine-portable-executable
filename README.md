@@ -79,7 +79,7 @@ Available scripts:
 * **create_ubuntu_chroots.sh** creates two Ubuntu chroots that contain libraries from the official sources.
 * **build_wine.sh** compiles Wine builds using two Ubuntu chroots (32-bit and 64-bit).
 * **create_wine_runtime.sh** creates runtime by copying libraries from two Ubuntu chroots (32-bit and 64-bit).
-* **build_squashfuse.sh** compiles squashfuse, lz4 and zstd and creates squashfuse.tar archive with them included.
+* **build_squashfuse.sh** compiles squashfuse, lz4 and zstd in 64-bit Ubuntu chroot and creates squashfuse.tar archive with them included.
 
 First two scripts are available in another my project: https://github.com/Kron4ek/Wine-Builds
 
