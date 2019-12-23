@@ -7,7 +7,7 @@ working_dir="${script_dir}"/wine-portable
 
 # You can change the urls below if you want to use a different Wine build,
 # a different runtime, or different scripts
-wine_url="https://github.com/Kron4ek/Wine-Builds/releases/download/4.19/wine-4.19-staging-amd64.tar.xz"
+wine_url="https://github.com/Kron4ek/Wine-Builds/releases/download/4.21/wine-4.21-staging-amd64.tar.xz"
 wine_runtime_url="https://github.com/Kron4ek/wine-portable-executable/raw/master/binaries/wine-runtime.tar.xz"
 wine_start_script_url="https://raw.githubusercontent.com/Kron4ek/wine-portable-executable/master/wine.sh"
 squashfs_start_script_url="https://raw.githubusercontent.com/Kron4ek/wine-portable-executable/master/squashfs-start.sh"
@@ -15,6 +15,7 @@ squashfuse_archive_url="https://github.com/Kron4ek/wine-portable-executable/raw/
 
 # Available compressors: gzip, lzma, lzo, lz4, xz, zstd
 # See the mksquashfs documentation for more information
+# Keep in mind that builtin suqashfuse supports only lz4 and zstd
 squashfs_compressor=lz4
 compressor_arguments="-Xhc"
 
