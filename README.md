@@ -70,18 +70,18 @@ If you want to create a runtime, squashfuse and Wine build from the scratch, the
 
 All components that used in this project (the runtime, the squashfuse and the Wine builds) are created in Ubuntu chroots (32-bit and 64-bit) that contain libraries from the official sources.
 
-For my and your convenience i regularly upload ready-to-use binaries. 
+For my and your convenience i regularly upload ready-to-use runtime, squashfuse and Wine builds.
 
 If you want, you can create everything yourself using the available scripts.
 
 Available scripts:
 
-* **create_ubuntu_chroots.sh** creates two Ubuntu chroots that contain libraries from the official sources.
+* **create_ubuntu_chroots.sh** creates two Ubuntu chroots (32-bit and 64-bit) that contain libraries from the official sources.
 * **build_wine.sh** compiles Wine builds using two Ubuntu chroots (32-bit and 64-bit).
 * **create_wine_runtime.sh** creates runtime by copying libraries from two Ubuntu chroots (32-bit and 64-bit).
-* **build_squashfuse.sh** compiles squashfuse, lz4 and zstd in 64-bit Ubuntu chroot and creates squashfuse.tar archive with them included.
+* **build_squashfuse.sh** compiles squashfuse, lz4 and zstd in 64-bit Ubuntu chroot and creates squashfuse.tar with them included.
 
-First two scripts are available in another my project: https://github.com/Kron4ek/Wine-Builds
+The first two scripts are available in another my project: https://github.com/Kron4ek/Wine-Builds
 
 ---
 
