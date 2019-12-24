@@ -5,17 +5,13 @@
 script_dir="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 working_dir="${script_dir}"/wine-portable
 
-# You can change the urls below if you want to use a different Wine build,
-# a different runtime, or different scripts
+# You can change the url below if you want to use a different Wine build
+# You can also put your directory (named wine) containing Wine build near the script
+# If the script will see the directory named wine, then this URL will not be used
 wine_url="https://github.com/Kron4ek/Wine-Builds/releases/download/4.21/wine-4.21-staging-amd64.tar.xz"
-wine_runtime_url="https://github.com/Kron4ek/wine-portable-executable/raw/master/binaries/wine-runtime.tar.xz"
-wine_start_script_url="https://raw.githubusercontent.com/Kron4ek/wine-portable-executable/master/wine.sh"
-squashfs_start_script_url="https://raw.githubusercontent.com/Kron4ek/wine-portable-executable/master/squashfs-start.sh"
-squashfuse_archive_url="https://github.com/Kron4ek/wine-portable-executable/raw/master/binaries/squashfuse.tar"
 
-# Available compressors: gzip, lzma, lzo, lz4, xz, zstd
-# See the mksquashfs documentation for more information
-# Keep in mind that builtin suqashfuse supports only lz4 and zstd
+# Builtin suqashfuse supports only lz4 and zstd
+# So choose either lz4 or zstd
 squashfs_compressor="zstd"
 compressor_arguments="-Xcompression-level 10"
 
@@ -23,18 +19,24 @@ mkdir -p "${working_dir}"/squashfs-root
 
 cd "${working_dir}"/squashfs-root || exit 1
 
+# If there is no wine directory, then download Wine build from the URL
 if  [ ! -d wine ]; then
-	wget -nv -O wine.tar.xz "${wine_url}" -q --show-progress
-	tar xf wine.tar.xz
-	rm wine.tar.xz
-	mv wine* wine
+	if [ ! -d "${script_dir}"/wine ]; then
+		wget -nv -O wine.tar.xz "${wine_url}" -q --show-progress
+		tar xf wine.tar.xz
+		rm wine.tar.xz
+		mv wine* wine
+		
+		cp -r wine "${script_dir}"
+	else
+		cp -r "${script_dir}"/wine .
+	fi
 fi
 
 if [ ! -d wine-runtime ]; then
 	if [ ! -f "${script_dir}"/binaries/wine-runtime.tar.xz ]; then
-		wget -O wine-runtime.tar.xz "${wine_runtime_url}" -q --show-progress
-		tar xf wine-runtime.tar.xz
-		rm wine-runtime.tar.xz
+		echo "binaries/wine-runtime.tar.xz is required!"
+		exit 1
 	else
 		tar xf "${script_dir}"/binaries/wine-runtime.tar.xz
 	fi
@@ -42,7 +44,8 @@ fi
 
 if [ ! -f wine.sh ]; then
 	if [ ! -f "${script_dir}"/wine.sh ]; then
-		wget -O wine.sh "${wine_start_script_url}" -q --show-progress
+		echo "wine.sh is required!"
+		exit 1
 	else
 		cp "${script_dir}"/wine.sh .
 	fi
@@ -54,15 +57,17 @@ cd "${working_dir}"
 
 if [ ! -f squashfuse.tar ]; then
 	if [ ! -f "${script_dir}"/binaries/squashfuse.tar ]; then
-		wget -O squashfuse.tar "${squashfuse_archive_url}" -q --show-progress
+		echo "binaries/squashfuse.tar is required!"
+		exit 1
 	else
-		cp "${script_dir}"/binaries/squashfuse.tar .
+		cp -L "${script_dir}"/binaries/squashfuse.tar .
 	fi
 fi
 
 if [ ! -f squashfs-start.sh ]; then
 	if [ ! -f "${script_dir}"/squashfs-start.sh ]; then
-		wget -O squashfs-start.sh "${squashfs_start_script_url}" -q --show-progress
+		echo "squashfs-start.sh is required!"
+		exit 1
 	else
 		cp "${script_dir}"/squashfs-start.sh .
 	fi
@@ -82,4 +87,8 @@ mksquashfs squashfs-root wine.squashfs -comp $squashfs_compressor $compressor_ar
 cat squashfs-start.sh squashfuse.tar wine.squashfs > wine-portable.sh
 chmod +x wine-portable.sh
 
-echo "Done"
+mv wine-portable.sh "${script_dir}"
+cd "${script_dir}" && rm -r wine-portable
+
+clear
+echo "wine-portable.sh is created and ready to use!"
