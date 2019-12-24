@@ -91,4 +91,4 @@ mv wine-portable.sh "${script_dir}"
 cd "${script_dir}" && rm -r wine-portable
 
 clear
-echo "wine-portable.sh is created and ready to use!"
+echo "wine-portable.sh created and ready to use!"
