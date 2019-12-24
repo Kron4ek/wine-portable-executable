@@ -3,7 +3,6 @@
 ## Required packages: squashfs-tools wget
 
 script_dir="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
-working_dir="${script_dir}"/wine-portable
 
 # You can change the url below if you want to use a different Wine build
 # You can also put your directory (named wine) containing Wine build near the script
@@ -15,9 +14,10 @@ wine_url="https://github.com/Kron4ek/Wine-Builds/releases/download/4.21/wine-4.2
 squashfs_compressor="zstd"
 compressor_arguments="-Xcompression-level 10"
 
-mkdir -p "${working_dir}"/squashfs-root
+rm -rf "${script_dir}"/wine-portable
+mkdir -p "${script_dir}"/wine-portable/squashfs-root
 
-cd "${working_dir}"/squashfs-root || exit 1
+cd "${script_dir}"/wine-portable/squashfs-root || exit 1
 
 # If there is no wine directory, then download Wine build from the URL
 if  [ ! -d wine ]; then
@@ -53,7 +53,7 @@ if [ ! -f wine.sh ]; then
 	chmod +x wine.sh
 fi
 
-cd "${working_dir}"
+cd "${script_dir}"/wine-portable
 
 if [ ! -f squashfuse.tar ]; then
 	if [ ! -f "${script_dir}"/binaries/squashfuse.tar ]; then
