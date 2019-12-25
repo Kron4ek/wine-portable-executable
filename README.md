@@ -66,7 +66,7 @@ If you want to create a runtime, squashfuse and Wine build from the scratch, the
 
 ---
 
-## From the scratch / Sources / Security
+## From the scratch / Sources
 
 All components used in this project (the runtime, the squashfuse and the Wine builds) were created using the official sources.
 
