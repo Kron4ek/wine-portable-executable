@@ -3,10 +3,14 @@
 ## Required packages: fuse
 
 # Prevent launching as root
-if [ $EUID = 0 ]; then
-   echo "Do not run this app as root!"
+if [ -z $ALLOW_ROOT ]; then
+	if [ $EUID = 0 ]; then
+		echo "Do not run this app as root!"
+		echo
+		echo "If you really need to run it as root, set ALLOW_ROOT env variable"
    
-   exit 1
+		exit 1
+	fi
 fi
 
 # Full path to the script
@@ -20,7 +24,7 @@ working_dir=/tmp/"$(basename "$0")"_"$(id -un)"_$RANDOM
 # a problem with mounting the squashfs image due to an incorrectly calculated offset.
 
 # The size of this script
-scriptsize=2807
+scriptsize=2920
 
 # The size of the squashfuse.tar archive
 # Squashfuse.tar contains squashfuse binaries
