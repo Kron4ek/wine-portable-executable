@@ -22,11 +22,16 @@ Despite that most required libraries are included into the squashfs image, some 
 * libc6 (glibc)
 * libstdc++6 (gcc-libs)
 * libgcc1 (gcc-libs)
-* libasound2 (sound libraries)
-* libgl (videodriver)
-* libgnutls30
-* libgmp10
-* libvulkan1 (if you want to use DXVK/D9VK or run Vulkan games)
+* libfreetype6 (freetype2)
+* libasound2 (alsa-lib; required for sound to work)
+* libgl1 (required for running OpenGL applications and for using WineD3D)
+* vulkan-driver (required for running Vulkan applications and for using DXVK)
+
+Here are optional libraries that may be required for some applications:
+
+* libgnutls30 (gnutls)
+* libldap-2.4-2 (libldap)
+* libgmp10 (gmp)
 
 It's important to install both the 32-bit and 64-bit versions of these libraries.
 
@@ -42,17 +47,21 @@ Root rights are **not required**!
 
 Make the script executable and run it. For example:
 
-    chmod +x wine-portable-4.19-staging-amd64.sh
-    ./wine-portable-4.19-staging-amd64.sh application.exe
+    chmod +x wine-portable-5.x-staging-amd64.sh
+    ./wine-portable-5.x-staging-amd64.sh application.exe
 
 To run winecfg (you can run regedit the same way):
 
-    ./wine-portable-4.19-staging-amd64.sh winecfg
+    ./wine-portable-5.x-staging-amd64.sh winecfg
+    
+You can also use the built-in winetricks to install dlls and other components. For example, the command below will install dxvk and d3dcompiler_47:
+
+    ./wine-portable-5.x-staging-amd64.sh winetricks dxvk d3dcompiler_47
     
 For testing purposes or if installing libraries is not a problem for you (but you like SquashFS and the idea of a single Wine executable), you can disable the included libraries (runtime), in which case Wine will use only system libraries:
 
     export DISABLE_RUNTIME=1
-    ./wine-portable-4.19-staging-amd64.sh application.exe
+    ./wine-portable-5.x-staging-amd64.sh application.exe
 
 ---
 
