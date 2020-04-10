@@ -52,6 +52,7 @@ libvkd3d-shader.so.1
 libvkd3d.so.1
 libvorbisenc.so.2
 libvorbis.so.0
+libvulkan.so.1
 libwind.so.0
 libwrap.so.0
 libX11.so.6
