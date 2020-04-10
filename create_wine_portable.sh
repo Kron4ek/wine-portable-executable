@@ -53,6 +53,17 @@ if [ ! -f wine.sh ]; then
 	chmod +x wine.sh
 fi
 
+if [ ! -f winetricks ]; then
+	if [ ! -f "${script_dir}"/winetricks ]; then
+		wget -nv -O winetricks "https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks" -q --show-progress
+		cp winetricks "${script_dir}"
+	else
+		cp "${script_dir}"/winetricks .
+	fi
+	
+	chmod +x winetricks
+fi
+
 cd "${script_dir}"/wine-portable
 
 if [ ! -f squashfuse.tar ]; then
