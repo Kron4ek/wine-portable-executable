@@ -11,8 +11,8 @@ wine_url="https://github.com/Kron4ek/Wine-Builds/releases/download/4.21/wine-4.2
 
 # Builtin suqashfuse supports only lz4 and zstd
 # So choose either lz4 or zstd
-squashfs_compressor="zstd"
-compressor_arguments="-Xcompression-level 10"
+squashfs_compressor="lz4"
+compressor_arguments="-Xhc"
 
 rm -rf "${script_dir}"/wine-portable
 mkdir -p "${script_dir}"/wine-portable/squashfs-root
