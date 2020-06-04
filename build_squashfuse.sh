@@ -44,13 +44,13 @@ create_build_scripts () {
 	echo 'mkdir /opt/build_squashfuse' >> $MAINDIR/build.sh
 	echo 'cd /opt/build_squashfuse' >> $MAINDIR/build.sh
 	echo 'wget -O lz4.tar.gz https://github.com/lz4/lz4/archive/v1.9.2.tar.gz' >> $MAINDIR/build.sh
-	echo 'wget -O zstd.tar.gz https://github.com/facebook/zstd/archive/v1.4.4.tar.gz' >> $MAINDIR/build.sh
+	echo 'wget -O zstd.tar.gz https://github.com/facebook/zstd/archive/v1.4.5.tar.gz' >> $MAINDIR/build.sh
 	echo 'wget -O squashfuse.tar.gz https://github.com/vasi/squashfuse/archive/0.1.103.tar.gz' >> $MAINDIR/build.sh
 	echo 'tar xf lz4.tar.gz' >> $MAINDIR/build.sh
 	echo 'tar xf zstd.tar.gz' >> $MAINDIR/build.sh
 	echo 'tar xf squashfuse.tar.gz' >> $MAINDIR/build.sh
 	echo 'cd lz4-1.9.2 && make -j$(nproc) && make install' >> $MAINDIR/build.sh
-	echo 'cd ../zstd-1.4.4 && make -j$(nproc) && make install' >> $MAINDIR/build.sh
+	echo 'cd ../zstd-1.4.5 && make -j$(nproc) && make install' >> $MAINDIR/build.sh
 	echo 'cd ../squashfuse-0.1.103 && ./autogen.sh' >> $MAINDIR/build.sh
 	echo 'mkdir ../build && cd ../build' >> $MAINDIR/build.sh
 	echo '../squashfuse-0.1.103/configure --without-zlib --without-xz --without-lzo' >> $MAINDIR/build.sh
