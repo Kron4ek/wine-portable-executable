@@ -28,7 +28,7 @@ scriptsize=2920
 
 # The size of the squashfuse.tar archive
 # Squashfuse.tar contains squashfuse binaries
-sfusesize=1392640
+sfusesize=1423360
 
 # Offset where the squashfs image is stored
 offset=$((scriptsize+sfusesize))
