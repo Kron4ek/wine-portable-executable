@@ -40,6 +40,8 @@ done < "${scriptdir}"/runtime_libs_list.txt
 
 cd "${scriptdir}" || exit 1
 
+find wine-runtime -type f -exec strip --strip-unneeded {} \;
+
 echo "Creating and compressing archive..."
 tar -cf wine-runtime.tar wine-runtime
 xz -9 wine-runtime.tar
