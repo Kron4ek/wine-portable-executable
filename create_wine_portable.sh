@@ -7,7 +7,7 @@ script_dir="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 # You can change the url below if you want to use a different Wine build
 # You can also put your directory (named wine) containing Wine build near the script
 # If the script will see the directory named wine, then this URL will not be used
-wine_url="https://github.com/Kron4ek/Wine-Builds/releases/download/4.21/wine-4.21-staging-amd64.tar.xz"
+wine_url="https://github.com/Kron4ek/Wine-Builds/releases/download/5.15/wine-5.15-staging-amd64.tar.xz"
 
 # Builtin suqashfuse supports only lz4 and zstd
 # So choose either lz4 or zstd
