@@ -23,6 +23,13 @@ cd "${script_dir}"/wine-portable/squashfs-root || exit 1
 if  [ ! -d wine ]; then
 	if [ ! -d "${script_dir}"/wine ]; then
 		wget -nv -O wine.tar.xz "${wine_url}" -q --show-progress
+		
+		if [ $? -ne 0 ]; then
+			echo "URL for downloading Wine is incorrect!"
+			echo "Please set wine_url variable to correct URL"
+			exit 1
+		fi
+		
 		tar xf wine.tar.xz
 		rm wine.tar.xz
 		mv wine* wine
