@@ -59,7 +59,7 @@ if [ ! -d wine-runtime ]; then
 	if [ ! -f "${script_dir}"/binaries/wine-runtime.tar.xz ]; then
 		echo "binaries/wine-runtime.tar.xz is required!"
 		exit 1
-	elif [ "$(stat -c%s "${script_dir}"/binaries/wine-runtime.tar.xz)" -lt 10000 ];
+	elif [ "$(stat -c%s "${script_dir}"/binaries/wine-runtime.tar.xz)" -lt 10000 ]; then
 		echo "Seems like binaries/wine-runtime.tar.xz is corrupted!"
 		exit 1
 	else
@@ -95,7 +95,7 @@ if [ ! -f squashfuse.tar ]; then
 	if [ ! -f "${script_dir}"/binaries/squashfuse.tar ]; then
 		echo "binaries/squashfuse.tar is required!"
 		exit 1
-	elif [ "$(stat -c%s "${script_dir}"/binaries/squashfuse.tar)" -lt 10000 ];
+	elif [ "$(stat -c%s "${script_dir}"/binaries/squashfuse.tar)" -lt 10000 ]; then
 		echo "Seems like binaries/squashfuse.tar is corrupted!"
 		exit 1
 	else
