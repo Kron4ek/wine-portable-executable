@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-## Required packages: squashfs-tools wget
+## Required packages: squashfs-tools wget xz
 
 script_dir="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 
@@ -14,6 +14,21 @@ wine_url="https://github.com/Kron4ek/Wine-Builds/releases/download/5.15/wine-5.1
 squashfs_compressor="lz4"
 compressor_arguments="-Xhc"
 
+if ! command -v mksquashfs 1>/dev/null; then
+	echo "squashfs-tools is required!"
+	exit 1
+fi
+
+if ! command -v wget 1>/dev/null; then
+	echo "wget is required!"
+	exit 1
+fi
+
+if ! command -v xz 1>/dev/null; then
+	echo "xz is required!"
+	exit 1
+fi
+
 rm -rf "${script_dir}"/wine-portable
 mkdir -p "${script_dir}"/wine-portable/squashfs-root
 
@@ -23,17 +38,17 @@ cd "${script_dir}"/wine-portable/squashfs-root || exit 1
 if  [ ! -d wine ]; then
 	if [ ! -d "${script_dir}"/wine ]; then
 		wget -nv -O wine.tar.xz "${wine_url}" -q --show-progress
-		
+
 		if [ $? -ne 0 ]; then
 			echo "URL for downloading Wine is incorrect!"
 			echo "Please set wine_url variable to correct URL"
 			exit 1
 		fi
-		
+
 		tar xf wine.tar.xz
 		rm wine.tar.xz
 		mv wine* wine
-		
+
 		cp -r wine "${script_dir}"
 	else
 		cp -r "${script_dir}"/wine .
@@ -43,6 +58,9 @@ fi
 if [ ! -d wine-runtime ]; then
 	if [ ! -f "${script_dir}"/binaries/wine-runtime.tar.xz ]; then
 		echo "binaries/wine-runtime.tar.xz is required!"
+		exit 1
+	elif [ "$(stat -c%s "${script_dir}"/binaries/wine-runtime.tar.xz)" -lt 10000 ];
+		echo "Seems like binaries/wine-runtime.tar.xz is corrupted!"
 		exit 1
 	else
 		tar xf "${script_dir}"/binaries/wine-runtime.tar.xz
@@ -56,7 +74,7 @@ if [ ! -f wine.sh ]; then
 	else
 		cp "${script_dir}"/wine.sh .
 	fi
-	
+
 	chmod +x wine.sh
 fi
 
@@ -67,7 +85,7 @@ if [ ! -f winetricks ]; then
 	else
 		cp "${script_dir}"/winetricks .
 	fi
-	
+
 	chmod +x winetricks
 fi
 
@@ -76,6 +94,9 @@ cd "${script_dir}"/wine-portable
 if [ ! -f squashfuse.tar ]; then
 	if [ ! -f "${script_dir}"/binaries/squashfuse.tar ]; then
 		echo "binaries/squashfuse.tar is required!"
+		exit 1
+	elif [ "$(stat -c%s "${script_dir}"/binaries/squashfuse.tar)" -lt 10000 ];
+		echo "Seems like binaries/squashfuse.tar is corrupted!"
 		exit 1
 	else
 		cp -L "${script_dir}"/binaries/squashfuse.tar .
@@ -89,7 +110,7 @@ if [ ! -f squashfs-start.sh ]; then
 	else
 		cp "${script_dir}"/squashfs-start.sh .
 	fi
-	
+
 	chmod +x squashfs-start.sh
 fi
 
