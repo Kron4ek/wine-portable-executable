@@ -1,3 +1,12 @@
+## Deprecated
+
+The project is deprecated in favor of another my project [**Conty**](https://github.com/Kron4ek/Conty), which is basically a much improved and extended version of this project.
+
+Conty not only allows to run Wine without any dependecies installed, but also allows to run anything else. Take a look, if you are interested.
+
+https://github.com/Kron4ek/Conty
+
+
 ## Description
 
 This project allows you to pack Wine and almost all of its required libraries into a single portable executable that should work on most Linux distributions. This project uses SquashFS as the container for Wine and its libraries (similar to what AppImage does).
